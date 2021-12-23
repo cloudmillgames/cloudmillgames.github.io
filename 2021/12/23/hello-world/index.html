@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="Cloud Mill Games">
 <meta property="og:description" content="@import url(&#39;https:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css?family&#x3D;Orbitron&#39;);  #cmg-time {     background-color: #121212;     font-family: &#39;Orbitron&#39;, sans-serif;     color: #6699ff;     font-size: 56px;     text">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-12-23T04:05:43.593Z">
-<meta property="article:modified_time" content="2021-12-23T04:05:43.593Z">
+<meta property="article:published_time" content="2021-12-23T08:40:59.195Z">
+<meta property="article:modified_time" content="2021-12-23T08:40:59.195Z">
 <meta property="article:author" content="ZenithSal">
 <meta name="twitter:card" content="summary">
   
@@ -76,7 +76,7 @@
         <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/12/23/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-12-23T04:05:43.593Z" itemprop="datePublished">2021-12-23</time>
+  <time class="dt-published" datetime="2021-12-23T08:40:59.195Z" itemprop="datePublished">2021-12-23</time>
 </a>
     
   </div>
@@ -122,11 +122,25 @@
 <p>This is a temp landing-page as I’m converting website to a different solution/host and perhaps refreshing the theme.</p>
 <p>To learn more about me, feel free to check my <a target="_blank" rel="noopener" href="https://twitter.com/zenithsal">twitter</a> or <a target="_blank" rel="noopener" href="https://zenithsal.com/">blog</a>.</p>
 <script>
+
+// Returns the ISO week of the date.
+Date.prototype.getWeek = function() {
+  var date = new Date(this.getTime());
+  date.setHours(0, 0, 0, 0);
+  // Thursday in current week decides the year.
+  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+  // January 4 is always in week 1.
+  var week1 = new Date(date.getFullYear(), 0, 4);
+  // Adjust to Thursday in week 1 and count number of weeks from date to week1.
+  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
+                        - 3 + (week1.getDay() + 6) % 7) / 7);
+}
+
 function currentTime() {
   // CMG-CLOCK: based on 100rabbits alternative time system
   // 0 to 999 ticks days, map from 24h60m60s to 0-999.
   // a-z indicating 26 months, 1 or 2 indicating first or second week of month.
-  var date = new Date(); /* creating object of Date class */
+  var date = new Date();
   var hour = date.getHours();
   var min = date.getMinutes();
   var sec = date.getSeconds();
@@ -137,17 +151,14 @@ function currentTime() {
   var cursubticks = Math.floor(((curseconds % secsbetweenticks)/secsbetweenticks)*1000);
   var cmgticks = Math.floor((curseconds / allseconds) * 1000);
 
-  var oneJan =  new Date(date.getFullYear(), 0, 1);
-  var numberOfDays =  Math.floor((date - oneJan) / (24 * 60 * 60 * 1000));
-
-  var weekofyear = Math.ceil((date.getDay() + 1 + numberOfDays) / 7);
-  var cmgdate = String.fromCharCode(Math.floor(weekofyear/2)+64) + Math.floor(weekofyear%2).toString()
+  var weekofyear = date.getWeek();
+  var cmgdate = String.fromCharCode(Math.floor(weekofyear/2)+65) + Math.floor(weekofyear%14).toString()
 
   var presentation = cmgticks.toString() + "-" + cmgdate;
 
-  document.getElementById("cmg-clock").innerText = presentation; /* adding time to the div */
+  document.getElementById("cmg-clock").innerText = presentation;
   document.getElementById("cmg-subticks").innerText = cursubticks;
-  var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+  var t = setTimeout(function(){ currentTime() }, 1000); 
 }
 
 function updateTime(k) {
@@ -159,8 +170,9 @@ function updateTime(k) {
   }
 }
 
-currentTime(); /* calling currentTime() function to initiate the process */
+currentTime();
 </script>
+
       
     </div>
     <footer class="article-footer">
