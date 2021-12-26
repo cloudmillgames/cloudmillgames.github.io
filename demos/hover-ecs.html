@@ -1115,6 +1115,40 @@ canvas{
 -- ecsBucketsList: { bucket_id = comps_list, .. }
 -- ecsBuckets: { bucket_id = {ent0id, ent1id, ..}, bucket_id = {ent2id, ent5id, ..}, .. }
 
+-- API:
+-- * UpdateECS(): runs all update systems
+-- * DrawECS(): runs all draw systems
+-- * DefineComponent(name, comp_data)
+-- * DefineUpdateSystem(comps_list, system_proc)
+-- * DefineDrawSystem(comps_list, system_proc)
+-- * SpawnEntity(comps_list)
+-- * GetEntComps(eid): returns entity comp_data
+-- * GetEntComp(eid, comp_name): returns comp_name data
+-- * EntAddComp(eid, comp_name): adds component to existing entity
+-- * EntRemComp(eid, comp_name): remove component from existing entity
+-- * KillEntity(eid)
+-- * KillAllEntities()
+-- * IsDeadEntity(eid)
+-- * CreateComp(comp_name): creates component without adding to entity
+-- * CollectEntsWith(comps_list): collects all entities that have comps_list
+-- * CountLiveEnts(): returns number of live entities
+--
+-- Params guide:
+-- * name: a unique string name of a component
+-- * comp_data: table that holds all component's properties
+-- * comps_list: table-list of components names
+-- * system_proc: function call with signature `FuncName(ent)`
+-- * eid: entity id number
+-- * comp_name: unique string name of a component
+--
+-- Limitations:
+-- * entities can only have one component per component name
+-- * KillAllEntities() removes entities instantly which could be problematic
+-- * entities that depend on other entities must check IsDeadEntity(other)
+-- * CollectEntsWith() is very expensive so don't call several times per frame
+-- There are probably more limitations
+
+
 ecsEntityId = 1
 ecsBucketId = 1
 ecsEntities = {}
