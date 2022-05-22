@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <meta name="color-scheme" content="light dark">
   
-  <title>Rebirth - Cloud Mill Games</title>
+  <title>Games - Cloud Mill Games</title>
   
     <link rel="shortcut icon" href="/favicon.ico">
   
@@ -99,7 +99,9 @@
             
             
             
-            <span>March</span>
+            
+            
+            <span>May</span>
             
             
             
@@ -108,94 +110,24 @@
             
             
             
-            
-            
-            <span>21,</span>
+            <span>15,</span>
             <span>2022</span>
         </div>
         
 
-        <h2 class="title">Rebirth</h2>
+        <h2 class="title">Games</h2>
     </div>
 
     <div class="divider"></div>
 
     <div class="content">
-        <style>
-  @import url('https://fonts.googleapis.com/css?family=Orbitron');
-
-  #cmg-time {
-    background-color: #121212;
-    font-family: 'Orbitron', sans-serif;
-    color: #6699ff;
-    font-size: 56px;
-    text-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  #cmg-subticks {
-    font-size: 18px;
-    color: white;
-  }
-</style>
-
-<p>Cloud Mill Games is back!<br>We are very excited and will announce what we are working on soon ☺️</p>
-<p>Until then, we will be publishing remastered versions of CMG’s small games in the coming weeks to be fully playable in your browser.<br>Our first remaster is coming soon: <strong>GoVolDot</strong></p>
-<div id="cmg-time">
-  <div id="cmg-clock">CMG-CLOCK</div>
-  <div id="cmg-subticks">sub-ticks</div>
+        <div class="container">
+    <div class="post-list">
+        <iframe frameborder="0" src="https://itch.io/embed/1530804?bg_color=222&amp;fg_color=fff&amp;link_color=5cfa5c" width="552" height="167"><a target="_blank" rel="noopener" href="https://cloudmillgames.itch.io/govoldot">GoVolDot by Cloud Mill Games</a></iframe>
+    </div>
 </div>
 
-<script>
 
-  // Returns the ISO week of the date.
-  Date.prototype.getWeek = function () {
-    var date = new Date(this.getTime());
-    date.setHours(0, 0, 0, 0);
-    // Thursday in current week decides the year.
-    date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
-    // January 4 is always in week 1.
-    var week1 = new Date(date.getFullYear(), 0, 4);
-    // Adjust to Thursday in week 1 and count number of weeks from date to week1.
-    return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
-      - 3 + (week1.getDay() + 6) % 7) / 7);
-  }
-
-  function currentTime() {
-    // CMG-CLOCK: based on 100rabbits alternative time system
-    var date = new Date();
-    var hour = date.getHours();
-    var min = date.getMinutes();
-    var sec = date.getSeconds();
-
-    var allseconds = 24 * 60 * 60;
-    var curseconds = (hour * 3600) + (min * 60) + sec;
-    var secsbetweenticks = allseconds / 1000;
-    var cursubticks = Math.floor(((curseconds % secsbetweenticks) / secsbetweenticks) * 1000);
-    var cmgticks = Math.floor((curseconds / allseconds) * 1000);
-
-    var weekofyear = date.getWeek();
-    var cmgdate = String.fromCharCode(Math.floor(weekofyear / 2) + 64) + Math.floor(weekofyear % 14).toString()
-
-    var presentation = cmgticks.toString() + "-" + cmgdate;
-
-    document.getElementById("cmg-clock").innerText = presentation;
-    document.getElementById("cmg-subticks").innerText = cursubticks;
-    var t = setTimeout(function () { currentTime() }, 1000);
-  }
-
-  function updateTime(k) {
-    if (k < 10) {
-      return "0" + k;
-    }
-    else {
-      return k;
-    }
-  }
-
-  currentTime();
-</script>
     </div>
 
     
