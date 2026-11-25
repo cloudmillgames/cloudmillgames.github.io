@@ -94,52 +94,182 @@
 </nav>
         <article class="post">
     <div class="meta">
-        
-        <div class="date" id="date">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <span>November</span>
-            
-            
-            <span>25,</span>
-            <span>2026</span>
-        </div>
-        
-
         <h2 class="title">Apps</h2>
     </div>
 
     <div class="divider"></div>
 
     <div class="content">
-        <!-- TODOs
-- [ ] change links to be relative better than this
-- [ ] redesign a card style similar to Games itch cards with a thumbnail
--->
+        
+    </div>
 
-<div class="container">
-    <div class="post-list">
-        <div>
-            <div width="552" height="167"><a href="./calorie-tracker">Calorie Tracker</a></div>
+    <style>
+    .apps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 8px 0 0;
+    }
+
+    .app-item {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        padding: 28px;
+        border: 1px solid var(--border-color);
+        border-radius: 22px;
+        background: var(--card-bg);
+        transition: border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .app-item:hover {
+        border-color: #4F46E5;
+        box-shadow: 0 12px 32px rgba(79, 70, 229, .14);
+    }
+
+    .app-item .thumb {
+        width: 112px;
+        height: 112px;
+        border-radius: 26px;
+        display: block;
+    }
+
+    .app-item .thumb-placeholder {
+        width: 112px;
+        height: 112px;
+        border-radius: 26px;
+        border: 1px dashed var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--date-txt);
+        flex: 0 0 auto;
+    }
+
+    .app-item .body { flex: 1 1 auto; min-width: 0; }
+
+    .app-item .kicker {
+        margin: 0 0 6px;
+        font-size: .76rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #4F46E5;
+        font-weight: 700;
+    }
+
+    .app-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: var(--card-title);
+    }
+
+    .app-item p.desc {
+        margin: 0;
+        font-size: .96rem;
+        line-height: 1.6;
+        color: var(--black-4);
+        max-width: 60ch;
+    }
+
+    .app-item .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+    }
+
+    .app-item .btn {
+        font-size: .85rem;
+        padding: 8px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+        color: var(--card-title);
+    }
+
+    .app-item .btn.primary {
+        background: #4F46E5;
+        border-color: #4F46E5;
+        color: #fff;
+    }
+
+    .app-item .btn.muted { color: var(--date-txt); }
+
+
+    .app-item .thumb-link {
+        flex: 0 0 auto;
+        display: block;
+        border-radius: 26px;
+    }
+
+    .app-item .body-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .app-item p, .app-item h3 {
+        padding: 0;
+        max-width: none;
+    }
+    .app-item p.desc {
+        max-width: 60ch;
+    }
+
+    .app-item.upcoming {
+        border-style: dashed;
+        background: transparent;
+    }
+
+    .app-item.upcoming h3 { color: var(--date-txt); }
+
+    @media (max-width: 760px) {
+        .app-item { flex-direction: column; align-items: flex-start; gap: 18px; }
+    }
+    </style>
+
+    <div class="container">
+        <div class="apps-list">
+
+            
+                
+                    
+                    <div class="app-item">
+                        <a class="thumb-link" href="/apps/calorie-tracker"><img class="thumb" src="/images/apps/calorie-tracker.png" alt="Calorie Tracker app icon"></a>
+                        <div class="body">
+                            <a class="body-link" href="/apps/calorie-tracker">
+                                <p class="kicker">Health &amp; Fitness (Android)</p>
+                                <h3>Calorie Tracker</h3>
+                                <p class="desc">Log calories in kCal or kJ, set a daily limit, and track weekly weigh-ins. First app in the designed-for-humans series.
+</p>
+                            </a>
+                            <div class="actions">
+                                
+                                    <a class="btn primary" href="/">Coming to Google Play</a>
+                                
+                                    <a class="btn muted" href="/apps/calorie-tracker/">Read more →</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+            
+                
+                    
+                    <div class="app-item upcoming">
+                        <div class="thumb-placeholder">+</div>
+                        <div class="body">
+                            <p class="kicker">In development</p>
+                            <h3>Next app</h3>
+                            <p class="desc">The next app is on the way. Stay tuned!</p>
+                        </div>
+                    </div>
+                
+            
         </div>
     </div>
-</div>
-
-
-    </div>
-
-    
-        
-    
 </article>
         <footer>
     <div class="inner">
